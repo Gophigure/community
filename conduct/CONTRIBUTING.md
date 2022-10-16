@@ -34,7 +34,7 @@ And as such, we'd like to...
 *"**Help!** I just have a question!" — Unknown Person*
 
 Does this sound like you? Head over to our [GitHub Discussions][community-gophigure-discussions-q-a]
-Q&A category for help.
+`❓ Questions & Answers` category for help.
 
 > **Note**
 > You can also ask questions in the `💬 support` forum channel in our
@@ -91,6 +91,94 @@ translation.
 ---
 
 ### Pull Requests
+
+Pull requests are typically used to stage changes to a codebase before committing the changes.
+
+These changes can range from ...
+- code,
+- dependencies,
+- documentations,
+- and tools.
+
+#### Setting up your Local Environment
+
+Setting up a local environment to develop on a new codebase can be daunting, especially when there
+are a lot of requirements laid out before you.
+
+> **Note**
+> Most repositories in the [Gophigure Community][community-gophigure] will have either a
+> `REQUIREMENTS` file or have build instructions in the `README` file that outline requirements.
+
+1. Locate and fulfill the requirements for the codebase, these requirements can be found in the
+   places named just above.
+
+    These requirements can be things such as ...
+
+    - tools,
+    - dependencies,
+    - environment variables,
+    - and more!
+
+    <br/>
+
+    > **Note**
+    > Most, if not **all** projects will require you to use a `git`-compatible tool such as the
+    > official `git` executable (available from [this website](https://git-scm.com/)) in order to
+    > make changes to the codebase in a way suitable for creating pull requests.
+
+2. [Fork][docs-github-fork] and clone the repository, sometimes dependencies must be acquired
+   *after* cloning the repository to your local machine.
+
+    `git clone <uri> [optional path]` *— this will clone the repository at the supplied uri
+    (typically a HTTPS or SSH url) to your environment's file system, optionally to a provided path.*
+
+    > **Note**
+    > All examples in this document that involve manipulating a `git` repository will assume you are
+    > using the official `git` binary as listed above.
+
+    > **Note**
+    > Some repositories may use `git` submodules, you can view the documentation on how to interact
+    > with them [here](https://git-scm.com/docs/git-submodule).
+
+    Examples of repositories requiring "late" dependency acquisition include repositories built upon
+    technologies such as [Node.js](https://nodejs.dev/).
+
+1. Attempt to build or run the project locally, a repository should have steps on how to do this in
+   the `README` or `CONTRIBUTING` file.
+
+    If all goes well, you can move onto step 4! Otherwise, you may need to receive
+    [troubleshooting support](#support).
+
+2. Create a new branch for your new changes.
+
+    This is done to make syncing upstream changes easier, as opposed to making the process more
+    complicated when you choose to modify the base branch.
+
+    `git checkout -b <name>` *— this will create a new branch with the supplied name, based on the
+    already checked-out branch.*
+
+    > **Warning**
+    > `git checkout` can be a very destructive command if not used with caution! It has the ability
+    > to write to both the working and staging areas depending on your action and flags (`-W` and
+    > `-S`). It is **highly** recommended that you read the documentation on this command before
+    > performing actions not listed here.
+
+3. Make your changes, remembering to abide by the [Commit Messages](#commit-messages) and
+   [Code Style](#code-style) sections of this document.
+
+    If you're making a lot of closely-related commits, consider squashing some or all of the commits
+    with [`git rebase`](https://git-scm.com/docs/git-rebase).
+
+    > **Note**
+    > We *heavily* prefer that the author of the commits performs this action themselves, either on
+    > their own volition or by request of a maintainer. This is because squashing and merging
+    > through other means, such as when merging a pull request will invalidate commit signatures.
+
+4. `git push [-u origin <name>]` your changes to your fork, then submit a
+   [Pull Request][docs-github-pr].
+
+    We expect a very brief explanation of the pull request as the title, and a more in-depth
+    description with included reasoning as the body.
 
 ---
 
@@ -317,11 +405,14 @@ We do not typically use `.json5` files, but if the need arises then the style gu
 - All values intended to be interpreted as strings **must** use quotation marks or other YAML
   features that assert the value is a string, **e.g.** multi-line strings.
 
-    > ***"Why?"** Consistency and the infamous Norway problem.*
+    > ***"Why?"** Consistency and the infamous "Norway problem."*
 
 ## Further Reading
 
 For further reading, consult project-specific `CONTRIBUTING.md` files.
+
+[docs-github-pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+[docs-github-fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks
 
 [community-gophigure]: https://github.com/Gophigure
 [community-gophigure-discord]: https://discord.com/invite/hpxuuh6uq8
